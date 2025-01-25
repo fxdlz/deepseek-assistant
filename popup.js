@@ -5,6 +5,42 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     let chatHistory = [];
 
+    // 设置相关的元素
+    const toggleSettings = document.getElementById('toggle-settings');
+    const settingsPanel = document.getElementById('settings-panel');
+    const apiKeyInput = document.getElementById('api-key');
+    const saveSettings = document.getElementById('save-settings');
+    
+    // 检查是否已设置API Key
+    const { deepseekApiKey } = await chrome.storage.local.get(['deepseekApiKey']);
+    if (!deepseekApiKey) {
+      settingsPanel.classList.remove('hidden');
+    }
+    
+    // 切换设置面板
+    toggleSettings.addEventListener('click', () => {
+      settingsPanel.classList.toggle('hidden');
+    });
+    
+    // 保存设置
+    saveSettings.addEventListener('click', async () => {
+      const apiKey = apiKeyInput.value.trim();
+      if (!apiKey) {
+        appendMessage('system', '请输入有效的 API Key');
+        return;
+      }
+      
+      try {
+        await chrome.storage.local.set({ deepseekApiKey: apiKey });
+        settingsPanel.classList.add('hidden');
+        apiKeyInput.value = ''; // 清空输入框
+        appendMessage('system', 'API Key 设置成功');
+      } catch (error) {
+        console.error('Error saving API key:', error);
+        appendMessage('system', '保存 API Key 失败');
+      }
+    });
+
     // 处理选中的文本并自动发送
     async function handleSelectedText() {
       try {

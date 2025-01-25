@@ -335,74 +335,72 @@
 
 .deepseek-popup .settings-panel {
   position: absolute;
-  top: 40px;
+  top: 50px;
   right: 10px;
   background: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 2147483649;
+  z-index: 1000;
 }
 
-.settings-content {
+.deepseek-popup .settings-panel.hidden {
+  display: none;
+}
+
+.deepseek-popup .settings-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-#api-key-input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.deepseek-popup #api-key {
+  width: 250px;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
-.settings-panel button {
-  padding: 8px;
+.deepseek-popup #api-key:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.deepseek-popup #save-settings {
+  padding: 8px 16px;
   background: #1a73e8;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.settings-panel button:hover {
+.deepseek-popup #save-settings:hover {
   background: #1557b0;
+}
+
+.deepseek-popup #toggle-settings {
+  padding: 6px;
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deepseek-popup #toggle-settings:hover {
+  background: #f5f5f5;
+  border-color: #d0d0d0;
 }
 
 .deepseek-popup .hidden {
   display: none;
-}
-
-.deepseek-popup #toggle-settings {
-  width: fit-content;
-  padding: 4px 8px;
-  background-color: transparent;
-  border: 1px solid #dadce0;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #5f6368;
-  font-size: 13px;
-}
-
-.deepseek-popup #toggle-settings:hover {
-  background-color: rgba(32,33,36,0.059);
-}
-
-.deepseek-popup #api-key {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.deepseek-popup #api-key:focus {
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
-  outline: none;
 }
 
 .deepseek-popup .deepseek-assistant-popup .message {
