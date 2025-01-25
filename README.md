@@ -1,1 +1,1 @@
-# deepseek-assistant
+# An AI chat assistant browser plugin based on DeepSeek
